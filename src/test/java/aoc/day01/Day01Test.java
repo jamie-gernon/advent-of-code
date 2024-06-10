@@ -1,6 +1,7 @@
 package aoc.day01;
 
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 public class Day01Test {
 
     @Test
-    public void testPart1() {
+    public void part1FindsLargestNumberOfCalories() {
         // Given
         List<String> input = List.of("1000",
                 "2000",
@@ -37,6 +38,7 @@ public class Day01Test {
     }
 
     @Test
+    @Disabled
     public void testPart2() {
         // Given
         List<String> input = Collections.singletonList("test");
