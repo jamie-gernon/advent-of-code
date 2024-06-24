@@ -38,15 +38,29 @@ public class Day01Test {
     }
 
     @Test
-    @Disabled
     public void testPart2() {
         // Given
-        List<String> input = Collections.singletonList("test");
+        List<String> input = List.of("1000",
+                "2000",
+                "3000",
+                "",
+                "4000",
+                "",
+                "5000",
+                "6000",
+                "",
+                "7000",
+                "8000",
+                "9000",
+                "",
+                "10000",
+                ""
+        );
 
         // When
         String result = new Day01().part2(input);
 
         // Then
-        assertThat(result).isEqualTo(input.get(0));
+        assertThat(result).isEqualTo("45000");
     }
 }

@@ -40,11 +40,11 @@ public class Day01 extends Day {
 
     @Override
     public String part2(List<String> input) {
-        List<Integer> calories = countCalories2(input);
-        return String.valueOf(calories.getLast());
+        int calories = countCalories2(input);
+        return String.valueOf(calories);
     }
 
-    private static List<Integer> countCalories2(List<String> input) {
+    private static int countCalories2(List<String> input) {
         int totalCalories = 0;
         int numOfCalories = 0;
         List<Integer> calories = new ArrayList<>();
@@ -58,11 +58,10 @@ public class Day01 extends Day {
         }
 
         Collections.sort(calories);
-        for (int index = 0; index <= 2; index ++){
+        for (int index = calories.size()-1; index > calories.size()-4; index --){
             totalCalories += Integer.valueOf(calories.get(index));
         }
-        System.out.println(totalCalories);
-        return calories;
+        return totalCalories;
     }
 
 }
