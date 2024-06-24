@@ -4,7 +4,9 @@ import aoc.Day;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Day01 extends Day {
 
@@ -17,51 +19,35 @@ public class Day01 extends Day {
     }
 
     @Override
-    public String part1(List<String> input) {
-        List<Integer> calories = countCalories1(input);
-        return String.valueOf(calories.getLast());
+    public String part1(List<String> snacks) {
+        List<Integer> elvesCalories = totalEachElvesCalories(snacks);
+        return String.valueOf(elvesCalories.getFirst());
     }
 
-    private static List<Integer> countCalories1(List<String> input) {
-        int numOfCalories = 0;
+    private static List<Integer> totalEachElvesCalories(List<String> snacks) {
+        int currentElfCalories = 0;
         List<Integer> calories = new ArrayList<>();
-        for (String snack : input) {
-            if (!snack.equals("")) {
-                numOfCalories += Integer.valueOf(snack);
+        for (String snack : snacks) {
+            if (!snack.isEmpty()) {
+                currentElfCalories += Integer.parseInt(snack);
             } else {
-                calories.add(numOfCalories);
-                numOfCalories = 0;
+                calories.add(currentElfCalories);
+                currentElfCalories = 0;
             }
         }
-        Collections.sort(calories);
+        calories.sort(Comparator.reverseOrder());
         return calories;
     }
 
 
     @Override
     public String part2(List<String> input) {
-        int calories = countCalories2(input);
-        return String.valueOf(calories);
+        return String.valueOf(caloriesForThreeGreediestElves(input));
     }
 
-    private static int countCalories2(List<String> input) {
-        int totalCalories = 0;
-        int numOfCalories = 0;
-        List<Integer> calories = new ArrayList<>();
-        for (String snack : input) {
-            if (!snack.equals("")) {
-                numOfCalories += Integer.valueOf(snack);
-            } else {
-                calories.add(numOfCalories);
-                numOfCalories = 0;
-            }
-        }
-
-        Collections.sort(calories);
-        for (int index = calories.size()-1; index > calories.size()-4; index --){
-            totalCalories += Integer.valueOf(calories.get(index));
-        }
-        return totalCalories;
+    private static int caloriesForThreeGreediestElves(List<String> input) {
+        List<Integer> calories = totalEachElvesCalories(input);
+        return calories.get(0) + calories.get(1) + calories.get(2);
     }
 
 }
