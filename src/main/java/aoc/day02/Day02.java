@@ -19,10 +19,10 @@ public class Day02 extends Day {
         int result = 0;
         String game = input.get(0);
         String[] moves = game.split(" ");
-        String yourMove = moves[1];
-        String oppMove = moves[0];
 
-        for (String turns: moves ) {
+        for (int i = 0; i < moves.length; i += 2) {
+            String oppMove = moves[i];
+            String yourMove = moves[i + 1];
 
             if (yourMove.equals("X")) { // Plus 1 if you use Rock
                 result += 1;
@@ -32,17 +32,13 @@ public class Day02 extends Day {
                 result += 3;
             }
 
-            if (yourMove.equals("X") && oppMove.equals("A")) { // Rock draw
+            if (yourMove.equals("X") && oppMove.equals("A") ||
+                yourMove.equals("Y") && oppMove.equals("B") ||
+                yourMove.equals("Z") && oppMove.equals("C")){ // draws
                 result += 3;
-            } else if (yourMove.equals("Y") && oppMove.equals("B")) { // Paper draw
-                result += 3;
-            } else if (yourMove.equals("Z") && oppMove.equals("C")) { // Scissors draw
-                result += 3;
-            } else if (yourMove.equals("X") && oppMove.equals("C")) { // Rock beats Scissors
-                result += 6;
-            } else if (yourMove.equals("Y") && oppMove.equals("A")) { // Paper beats Rock
-                result += 6;
-            } else if (yourMove.equals("Z") && oppMove.equals("B")) { // Scissors beats Paper
+            } else if (yourMove.equals("X") && oppMove.equals("C") ||
+                       yourMove.equals("Y") && oppMove.equals("A") ||
+                       yourMove.equals("Z") && oppMove.equals("B")) { // Rock beats Scissors
                 result += 6;
             }
         }
