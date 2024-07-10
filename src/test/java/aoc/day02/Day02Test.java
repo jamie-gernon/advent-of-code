@@ -49,6 +49,48 @@ class Day02Test {
     }
 
     @Test
+    void drawWithRock() {
+        List<String> input = List.of("A X"); // Rock, Rock
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("4");
+    }
+
+    @Test
+    void drawWithPaper() {
+        List<String> input = List.of("B Y"); // Paper, Paper
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("5");
+    }
+
+    @Test
+    void drawWithScissors() {
+        List<String> input = List.of("C Z"); // Scissors, Scissors
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("6");
+    }
+
+    @Test
+    void winWithRock() {
+        List<String> input = List.of("C X"); // Scissors, Rock
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("7");
+    }
+
+    @Test
+    void winWithPaper() {
+        List<String> input = List.of("A Y"); // Rock, Paper
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("8");
+    }
+
+    @Test
+    void winWithScissors() {
+        List<String> input = List.of("B Z"); // Paper, Scissors
+        String result = new Day02().part1(input);
+        assertThat(result).isEqualTo("9");
+    }
+
+    @Test
     @Disabled
     void part2() {
         // Given
