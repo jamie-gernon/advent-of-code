@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class Day02Test {
 
     @Test
-    @Disabled
     void scoreForWinLoseDrawWithRockPaperScissors() {
         // RED -> GREEN -> REFACTOR
         // Given

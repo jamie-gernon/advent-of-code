@@ -15,14 +15,12 @@ public class Day02 extends Day {
     }
 
     @Override
-    public String part1(List<String> input) {
+    public String part1(List<String> games) {
         int result = 0;
-        String game = input.get(0);
-        String[] moves = game.split(" ");
-
-        for (int i = 0; i < moves.length; i += 2) {
-            String oppMove = moves[i];
-            String yourMove = moves[i + 1];
+        for (String game : games) {
+            String[] moves = game.split(" ");
+            String oppMove = moves[0];
+            String yourMove = moves[1];
 
             if (yourMove.equals("X")) { // Plus 1 if you use Rock
                 result += 1;
@@ -33,16 +31,15 @@ public class Day02 extends Day {
             }
 
             if (yourMove.equals("X") && oppMove.equals("A") ||
-                yourMove.equals("Y") && oppMove.equals("B") ||
-                yourMove.equals("Z") && oppMove.equals("C")){ // draws
+                    yourMove.equals("Y") && oppMove.equals("B") ||
+                    yourMove.equals("Z") && oppMove.equals("C")) { // draws
                 result += 3;
             } else if (yourMove.equals("X") && oppMove.equals("C") ||
-                       yourMove.equals("Y") && oppMove.equals("A") ||
-                       yourMove.equals("Z") && oppMove.equals("B")) { // Rock beats Scissors
+                    yourMove.equals("Y") && oppMove.equals("A") ||
+                    yourMove.equals("Z") && oppMove.equals("B")) { // wins
                 result += 6;
             }
         }
-
         return String.valueOf(result);
     }
 
