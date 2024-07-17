@@ -44,8 +44,23 @@ public class Day02 extends Day {
     }
 
     @Override
-    public String part2(List<String> input) {
-        return null;
+    public String part2(List<String> games) {
+        String game = games.get(0);
+        String theirMove = game.split(" ")[0];
+        int result = 0;
+        if (theirMove.equals("C")) {
+            result += 2;
+        } else if (theirMove.equals("A")) {
+            result += 3;
+        }
+        else {
+            result += 1;
+        }
+        String outcome = game.split(" ")[1];
+        if (outcome.equals("Y")) {
+            result += 3;
+        }
+        return String.valueOf(result);
     }
 
 }

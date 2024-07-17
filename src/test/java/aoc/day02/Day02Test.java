@@ -32,7 +32,7 @@ class Day02Test {
     void loseToPaperWithRock() {
         List<String> input = List.of("B X");
         String result = day02.part1(input);
-        assertThat(result).isEqualTo("12");
+        assertThat(result).isEqualTo("1");
     }
 
     @Test
@@ -93,16 +93,62 @@ class Day02Test {
 
     @Test
     @Disabled
-    void part2() {
+    void scoreForDrawLoseWinAgainstRockPaperScissors() {
         // Given
         List<String> input = List.of(
-                ""
+                "A Y",
+                "B X",
+                "C Z"
         );
 
         // When
         String result = day02.part2(input);
 
         // Then
-        assertThat(result).isEqualTo("");
+        assertThat(result).isEqualTo("12");
+    }
+
+    @Test
+    void loseWithRockAgainstPaper() {
+        List<String> input = List.of(
+                "B X"
+        );
+
+        // When
+        String result = day02.part2(input);
+
+        // Then
+        assertThat(result).isEqualTo("1");
+    }
+
+    @Test
+    void loseWithPaperAgainstScissors() {
+        List<String> input = List.of (
+                "C X"
+        );
+
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("2");
+    }
+
+    @Test
+    void loseWithScissorsAgainstRock() {
+        List<String> input = List.of("A X");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("3");
+    }
+
+    @Test
+    void drawWithRockPart2() {
+        List<String> input = List.of ( "A Y");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("4");
+    }
+
+    @Test
+    void part2DrawWithPaper() {
+        List<String> input = List.of("B Y");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("5");
     }
 }
