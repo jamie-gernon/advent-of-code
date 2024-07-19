@@ -1,6 +1,5 @@
 package aoc.day02;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -92,7 +91,6 @@ class Day02Test {
     }
 
     @Test
-    @Disabled
     void scoreForDrawLoseWinAgainstRockPaperScissors() {
         // Given
         List<String> input = List.of(
@@ -150,5 +148,40 @@ class Day02Test {
         List<String> input = List.of("B Y");
         String result = day02.part2(input);
         assertThat(result).isEqualTo("5");
+    }
+
+    @Test
+    void part2DrawWithRock() {
+        List<String> input = List.of("A Y");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("4");
+    }
+
+    @Test
+    void part2DrawWithScissors() {
+        List<String> input = List.of("C Y");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("6");
+    }
+
+    @Test
+    void winWithRockAgainstScissors() {
+        List<String> input = List.of("C Z");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("8");
+    }
+
+    @Test
+    void winWithScissorsAgainstPaper() {
+        List<String> input = List.of("A Z");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("9");
+    }
+
+    @Test
+    void winWithPaperAgainstScissors() {
+        List<String> input = List.of("B Z");
+        String result = day02.part2(input);
+        assertThat(result).isEqualTo("7");
     }
 }

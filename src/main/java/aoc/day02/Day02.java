@@ -45,21 +45,37 @@ public class Day02 extends Day {
 
     @Override
     public String part2(List<String> games) {
-        String game = games.get(0);
-        String theirMove = game.split(" ")[0];
         int result = 0;
-        if (theirMove.equals("C")) {
-            result += 2;
-        } else if (theirMove.equals("A")) {
-            result += 3;
+        for (String game :games) {
+            String round = games.get(0);
+            String theirMove = round.split(" ")[0];
+            String outcome = round.split(" ")[1];
+
+            if (theirMove.equals("C") && outcome.equals("X")) {
+                result += 2;
+            } else if (theirMove.equals("A") && outcome.equals("X")) {
+                result += 3;
+            } else if (theirMove.equals("B") && outcome.equals("X")) {
+                result += 1;
+            }
+
+            if (theirMove.equals("C") && outcome.equals("Y")) {
+                result += 6;
+            } else if (theirMove.equals("A") && outcome.equals("Y")) {
+                result += 4;
+            } else if (theirMove.equals("B") && outcome.equals("Y")) {
+                result += 5;
+            }
+
+            if (theirMove.equals("C") && outcome.equals("Z")) {
+                result += 8;
+            } else if (theirMove.equals("A") && outcome.equals("Z")) {
+                result += 9;
+            } else if (theirMove.equals("B") && outcome.equals("Z")) {
+                result += 7;
+            }
         }
-        else {
-            result += 1;
-        }
-        String outcome = game.split(" ")[1];
-        if (outcome.equals("Y")) {
-            result += 3;
-        }
+
         return String.valueOf(result);
     }
 
