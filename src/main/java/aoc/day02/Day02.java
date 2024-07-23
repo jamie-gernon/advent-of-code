@@ -57,47 +57,77 @@ public class Day02 extends Day {
             String theirMove = game.split(" ")[0];
             String outcome = game.split(" ")[1];
 
-            boolean isLoss = outcome.equals("X");
-            boolean isDraw = outcome.equals("Y");
-            boolean isWin = outcome.equals("Z");
-
-            boolean theyUseRock = theirMove.equals("A");
-            boolean theyUsePaper = theirMove.equals("B");
-            boolean theyUseScissors = theirMove.equals("C");
-
-            if (isLoss) {
+            String ourMove;
+            if (isLoss(outcome)) {
                 result += LOSS_SCORE;
-                if (theyUseScissors) {
-                    result += PAPER_SCORE;
-                } else if (theyUseRock) {
-                    result += SCISSORS_SCORE;
-                } else if (theyUsePaper) {
-                    result += ROCK_SCORE;
+                if (isScissors(theirMove)) {
+                    ourMove = "Paper";
+                }
+                else if (isRock(theirMove)) {
+                    ourMove = "Scissors";
+                }
+                else {
+                    ourMove = "Rock";
                 }
             }
-            else if (isDraw) {
+            else if (isDraw(outcome)) {
                 result += DRAW_SCORE;
-                if (theyUseScissors) {
-                    result += SCISSORS_SCORE;
-                } else if (theyUseRock) {
-                    result += ROCK_SCORE;
-                } else if (theyUsePaper) {
-                    result += PAPER_SCORE;
+                if (isPaper(theirMove)) {
+                    ourMove = "Paper";
+                }
+                else if (isScissors(theirMove)) {
+                    ourMove = "Scissors";
+                }
+                else {
+                    ourMove = "Rock";
                 }
             }
-            else if (isWin) {
+            else {
                 result += WIN_SCORE;
-                if (theyUseScissors) {
-                    result += ROCK_SCORE;
-                } else if (theyUseRock) {
-                    result += SCISSORS_SCORE;
-                } else if (theyUsePaper) {
-                    result += PAPER_SCORE;
+                if (isRock(theirMove)) {
+                    ourMove = "Paper";
                 }
+                else if (isPaper(theirMove)) {
+                    ourMove = "Scissors";
+                }
+                else {
+                    ourMove = "Rock";
+                }
+            }
+            if (ourMove.equals("Paper")) {
+                result += PAPER_SCORE;
+            } else if (ourMove.equals("Scissors")) {
+                result += SCISSORS_SCORE;
+            } else {
+                result += ROCK_SCORE;
             }
         }
 
         return String.valueOf(result);
+    }
+
+    private static boolean isScissors(String theirMove) {
+        return theirMove.equals("C");
+    }
+
+    private static boolean isPaper(String theirMove) {
+        return theirMove.equals("B");
+    }
+
+    private static boolean isRock(String theirMove) {
+        return theirMove.equals("A");
+    }
+
+    private static boolean isWin(String outcome) {
+        return outcome.equals("Z");
+    }
+
+    private static boolean isDraw(String outcome) {
+        return outcome.equals("Y");
+    }
+
+    private static boolean isLoss(String outcome) {
+        return outcome.equals("X");
     }
 
 }

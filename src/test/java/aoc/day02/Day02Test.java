@@ -113,14 +113,14 @@ class Day02Test {
                 "A Y", // 4
                 "B X", // 1
                 "C Z", // 7
-                "A Z"  // 9
+                "A Z"  // 8
         );
 
         // When
         String result = day02.part2(input);
 
         // Then
-        assertThat(result).isEqualTo(String.valueOf(4 + 1 + 7 + 9));
+        assertThat(result).isEqualTo(String.valueOf(4 + 1 + 7 + 8));
     }
 
     @Test
@@ -189,16 +189,16 @@ class Day02Test {
     }
 
     @Test
-    void winWithScissorsAgainstPaper() {
+    void winWithPaperAgainstRock() {
         List<String> input = List.of("A Z");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo(String.valueOf(6 + 3));
+        assertThat(result).isEqualTo(String.valueOf(6 + 2));
     }
 
     @Test
-    void winWithPaperAgainstScissors() {
+    void winWithScissorsAgainstPaper() {
         List<String> input = List.of("B Z");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo(String.valueOf(6 + 2));
+        assertThat(result).isEqualTo(String.valueOf(6 + 3));
     }
 }
