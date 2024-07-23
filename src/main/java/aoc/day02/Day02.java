@@ -58,8 +58,9 @@ public class Day02 extends Day {
             String outcome = game.split(" ")[1];
 
             String ourMove;
+            final int outcomeScore;
             if (isLoss(outcome)) {
-                result += LOSS_SCORE;
+                outcomeScore = LOSS_SCORE;
                 if (isScissors(theirMove)) {
                     ourMove = "Paper";
                 }
@@ -71,7 +72,7 @@ public class Day02 extends Day {
                 }
             }
             else if (isDraw(outcome)) {
-                result += DRAW_SCORE;
+                outcomeScore = DRAW_SCORE;
                 if (isPaper(theirMove)) {
                     ourMove = "Paper";
                 }
@@ -83,7 +84,7 @@ public class Day02 extends Day {
                 }
             }
             else {
-                result += WIN_SCORE;
+                outcomeScore = WIN_SCORE;
                 if (isRock(theirMove)) {
                     ourMove = "Paper";
                 }
@@ -94,6 +95,7 @@ public class Day02 extends Day {
                     ourMove = "Rock";
                 }
             }
+            result += outcomeScore;
             if (ourMove.equals("Paper")) {
                 result += PAPER_SCORE;
             } else if (ourMove.equals("Scissors")) {
