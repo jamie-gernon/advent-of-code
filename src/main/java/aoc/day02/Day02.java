@@ -61,35 +61,38 @@ public class Day02 extends Day {
             boolean isDraw = outcome.equals("Y");
             boolean isWin = outcome.equals("Z");
 
-            boolean isScissors = theirMove.equals("C");
-            boolean isRock = theirMove.equals("A");
-            boolean isPaper = theirMove.equals("B");
+            boolean theyUseRock = theirMove.equals("A");
+            boolean theyUsePaper = theirMove.equals("B");
+            boolean theyUseScissors = theirMove.equals("C");
 
             if (isLoss) {
-                if (isScissors) {
-                    result += LOSS_SCORE + PAPER_SCORE;
-                } else if (isRock) {
-                    result += LOSS_SCORE + SCISSORS_SCORE;
-                } else if (isPaper) {
-                    result += LOSS_SCORE + ROCK_SCORE;
+                result += LOSS_SCORE;
+                if (theyUseScissors) {
+                    result += PAPER_SCORE;
+                } else if (theyUseRock) {
+                    result += SCISSORS_SCORE;
+                } else if (theyUsePaper) {
+                    result += ROCK_SCORE;
                 }
             }
             else if (isDraw) {
-                if (isScissors) {
-                    result += DRAW_SCORE + SCISSORS_SCORE;
-                } else if (isRock) {
-                    result += DRAW_SCORE + ROCK_SCORE;
-                } else if (isPaper) {
-                    result += DRAW_SCORE + PAPER_SCORE;
+                result += DRAW_SCORE;
+                if (theyUseScissors) {
+                    result += SCISSORS_SCORE;
+                } else if (theyUseRock) {
+                    result += ROCK_SCORE;
+                } else if (theyUsePaper) {
+                    result += PAPER_SCORE;
                 }
             }
             else if (isWin) {
-                if (isScissors) {
-                    result += WIN_SCORE + ROCK_SCORE;
-                } else if (isRock) {
-                    result += WIN_SCORE + SCISSORS_SCORE;
-                } else if (isPaper) {
-                    result += WIN_SCORE + PAPER_SCORE;
+                result += WIN_SCORE;
+                if (theyUseScissors) {
+                    result += ROCK_SCORE;
+                } else if (theyUseRock) {
+                    result += SCISSORS_SCORE;
+                } else if (theyUsePaper) {
+                    result += PAPER_SCORE;
                 }
             }
         }
