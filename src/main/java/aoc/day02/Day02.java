@@ -6,6 +6,13 @@ import java.util.List;
 
 public class Day02 extends Day {
 
+    public static final int DRAW_SCORE = 3;
+    public static final int WIN_SCORE = 6;
+    public static final int LOSS_SCORE = 0;
+    public static final int SCISSORS_SCORE = 3;
+    public static final int ROCK_SCORE = 1;
+    public static final int PAPER_SCORE = 2;
+
     static {
         currentDay = new Day02();
     }
@@ -60,29 +67,29 @@ public class Day02 extends Day {
 
             if (isLoss) {
                 if (isScissors) {
-                    result += 2;
+                    result += LOSS_SCORE + PAPER_SCORE;
                 } else if (isRock) {
-                    result += 3;
+                    result += LOSS_SCORE + SCISSORS_SCORE;
                 } else if (isPaper) {
-                    result += 1;
+                    result += LOSS_SCORE + ROCK_SCORE;
                 }
             }
             else if (isDraw) {
                 if (isScissors) {
-                    result += 6;
+                    result += DRAW_SCORE + SCISSORS_SCORE;
                 } else if (isRock) {
-                    result += 4;
+                    result += DRAW_SCORE + ROCK_SCORE;
                 } else if (isPaper) {
-                    result += 5;
+                    result += DRAW_SCORE + PAPER_SCORE;
                 }
             }
             else if (isWin) {
                 if (isScissors) {
-                    result += 7;
+                    result += WIN_SCORE + ROCK_SCORE;
                 } else if (isRock) {
-                    result += 9;
+                    result += WIN_SCORE + SCISSORS_SCORE;
                 } else if (isPaper) {
-                    result += 8;
+                    result += WIN_SCORE + PAPER_SCORE;
                 }
             }
         }
