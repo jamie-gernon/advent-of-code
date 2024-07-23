@@ -94,9 +94,9 @@ class Day02Test {
     void scoreForDrawLoseWinAgainstRockPaperScissors() {
         // Given
         List<String> input = List.of(
-                "A Y",
-                "B X",
-                "C Z"
+                "A Y", // 4
+                "B X", // 1
+                "C Z"  // 7
         );
 
         // When
@@ -104,6 +104,23 @@ class Day02Test {
 
         // Then
         assertThat(result).isEqualTo("12");
+    }
+
+    @Test
+    void scoreForDrawLoseWinWinAgainstRockPaperScissorsRock() {
+        // Given
+        List<String> input = List.of(
+                "A Y", // 4
+                "B X", // 1
+                "C Z", // 7
+                "A Z"  // 9
+        );
+
+        // When
+        String result = day02.part2(input);
+
+        // Then
+        assertThat(result).isEqualTo(String.valueOf(4 + 1 + 7 + 9));
     }
 
     @Test
@@ -116,7 +133,7 @@ class Day02Test {
         String result = day02.part2(input);
 
         // Then
-        assertThat(result).isEqualTo("1");
+        assertThat(result).isEqualTo(String.valueOf(0 + 1));
     }
 
     @Test
@@ -126,62 +143,62 @@ class Day02Test {
         );
 
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("2");
+        assertThat(result).isEqualTo(String.valueOf(0 + 2));
     }
 
     @Test
     void loseWithScissorsAgainstRock() {
         List<String> input = List.of("A X");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("3");
+        assertThat(result).isEqualTo(String.valueOf(0 + 3));
     }
 
     @Test
     void drawWithRockPart2() {
         List<String> input = List.of ( "A Y");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("4");
+        assertThat(result).isEqualTo(String.valueOf(3 + 1));
     }
 
     @Test
     void part2DrawWithPaper() {
         List<String> input = List.of("B Y");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("5");
+        assertThat(result).isEqualTo(String.valueOf(3 + 2));
     }
 
     @Test
     void part2DrawWithRock() {
         List<String> input = List.of("A Y");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("4");
+        assertThat(result).isEqualTo(String.valueOf(3 + 1));
     }
 
     @Test
     void part2DrawWithScissors() {
         List<String> input = List.of("C Y");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("6");
+        assertThat(result).isEqualTo(String.valueOf(3 + 3));
     }
 
     @Test
     void winWithRockAgainstScissors() {
         List<String> input = List.of("C Z");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("8");
+        assertThat(result).isEqualTo(String.valueOf(6 + 1));
     }
 
     @Test
     void winWithScissorsAgainstPaper() {
         List<String> input = List.of("A Z");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("9");
+        assertThat(result).isEqualTo(String.valueOf(6 + 3));
     }
 
     @Test
     void winWithPaperAgainstScissors() {
         List<String> input = List.of("B Z");
         String result = day02.part2(input);
-        assertThat(result).isEqualTo("7");
+        assertThat(result).isEqualTo(String.valueOf(6 + 2));
     }
 }

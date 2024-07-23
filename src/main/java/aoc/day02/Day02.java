@@ -47,32 +47,39 @@ public class Day02 extends Day {
     public String part2(List<String> games) {
         int result = 0;
         for (String game :games) {
-            String round = games.get(0);
-            String theirMove = round.split(" ")[0];
-            String outcome = round.split(" ")[1];
+            String theirMove = game.split(" ")[0];
+            String outcome = game.split(" ")[1];
 
-            if (theirMove.equals("C") && outcome.equals("X")) {
-                result += 2;
-            } else if (theirMove.equals("A") && outcome.equals("X")) {
-                result += 3;
-            } else if (theirMove.equals("B") && outcome.equals("X")) {
-                result += 1;
+            boolean isLoss = outcome.equals("X");
+            boolean isDraw = outcome.equals("Y");
+            boolean isWin = outcome.equals("Z");
+
+            if (isLoss) {
+                if (theirMove.equals("C")) {
+                    result += 2;
+                } else if (theirMove.equals("A")) {
+                    result += 3;
+                } else if (theirMove.equals("B")) {
+                    result += 1;
+                }
             }
-
-            if (theirMove.equals("C") && outcome.equals("Y")) {
-                result += 6;
-            } else if (theirMove.equals("A") && outcome.equals("Y")) {
-                result += 4;
-            } else if (theirMove.equals("B") && outcome.equals("Y")) {
-                result += 5;
+            else if (isDraw) {
+                if (theirMove.equals("C")) {
+                    result += 6;
+                } else if (theirMove.equals("A")) {
+                    result += 4;
+                } else if (theirMove.equals("B")) {
+                    result += 5;
+                }
             }
-
-            if (theirMove.equals("C") && outcome.equals("Z")) {
-                result += 8;
-            } else if (theirMove.equals("A") && outcome.equals("Z")) {
-                result += 9;
-            } else if (theirMove.equals("B") && outcome.equals("Z")) {
-                result += 7;
+            else if (isWin) {
+                if (theirMove.equals("C")) {
+                    result += 7;
+                } else if (theirMove.equals("A")) {
+                    result += 9;
+                } else if (theirMove.equals("B")) {
+                    result += 8;
+                }
             }
         }
 
