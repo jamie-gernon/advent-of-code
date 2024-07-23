@@ -54,30 +54,34 @@ public class Day02 extends Day {
             boolean isDraw = outcome.equals("Y");
             boolean isWin = outcome.equals("Z");
 
+            boolean isScissors = theirMove.equals("C");
+            boolean isRock = theirMove.equals("A");
+            boolean isPaper = theirMove.equals("B");
+
             if (isLoss) {
-                if (theirMove.equals("C")) {
+                if (isScissors) {
                     result += 2;
-                } else if (theirMove.equals("A")) {
+                } else if (isRock) {
                     result += 3;
-                } else if (theirMove.equals("B")) {
+                } else if (isPaper) {
                     result += 1;
                 }
             }
             else if (isDraw) {
-                if (theirMove.equals("C")) {
+                if (isScissors) {
                     result += 6;
-                } else if (theirMove.equals("A")) {
+                } else if (isRock) {
                     result += 4;
-                } else if (theirMove.equals("B")) {
+                } else if (isPaper) {
                     result += 5;
                 }
             }
             else if (isWin) {
-                if (theirMove.equals("C")) {
+                if (isScissors) {
                     result += 7;
-                } else if (theirMove.equals("A")) {
+                } else if (isRock) {
                     result += 9;
-                } else if (theirMove.equals("B")) {
+                } else if (isPaper) {
                     result += 8;
                 }
             }
