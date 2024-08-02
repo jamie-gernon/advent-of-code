@@ -9,9 +9,6 @@ public class Day02 extends Day {
     public static final int DRAW_SCORE = 3;
     public static final int WIN_SCORE = 6;
     public static final int LOSS_SCORE = 0;
-    public static final int SCISSORS_SCORE = 3;
-    public static final int ROCK_SCORE = 1;
-    public static final int PAPER_SCORE = 2;
 
     static {
         currentDay = new Day02();
@@ -54,74 +51,24 @@ public class Day02 extends Day {
     public String part2(List<String> games) {
         int result = 0;
         for (String game :games) {
-            String theirMove = game.split(" ")[0];
+            Move theirMove = Move.fromString(game.split(" ")[0]);
             String outcome = game.split(" ")[1];
 
-            String ourMove;
-            final int outcomeScore;
             if (isLoss(outcome)) {
-                outcomeScore = LOSS_SCORE;
-                if (isScissors(theirMove)) {
-                    ourMove = "Paper";
-                }
-                else if (isRock(theirMove)) {
-                    ourMove = "Scissors";
-                }
-                else {
-                    ourMove = "Rock";
-                }
+                result += theirMove.winsAgainst().moveScore();
+                result += LOSS_SCORE;
             }
             else if (isDraw(outcome)) {
-                outcomeScore = DRAW_SCORE;
-                if (isPaper(theirMove)) {
-                    ourMove = "Paper";
-                }
-                else if (isScissors(theirMove)) {
-                    ourMove = "Scissors";
-                }
-                else {
-                    ourMove = "Rock";
-                }
+                result += theirMove.drawsAgainst().moveScore();
+                result += DRAW_SCORE;
             }
             else {
-                outcomeScore = WIN_SCORE;
-                if (isRock(theirMove)) {
-                    ourMove = "Paper";
-                }
-                else if (isPaper(theirMove)) {
-                    ourMove = "Scissors";
-                }
-                else {
-                    ourMove = "Rock";
-                }
-            }
-            result += outcomeScore;
-            if (ourMove.equals("Paper")) {
-                result += PAPER_SCORE;
-            } else if (ourMove.equals("Scissors")) {
-                result += SCISSORS_SCORE;
-            } else {
-                result += ROCK_SCORE;
+                result += theirMove.losesAgainst().moveScore();
+                result += WIN_SCORE;
             }
         }
 
         return String.valueOf(result);
-    }
-
-    private static boolean isScissors(String theirMove) {
-        return theirMove.equals("C");
-    }
-
-    private static boolean isPaper(String theirMove) {
-        return theirMove.equals("B");
-    }
-
-    private static boolean isRock(String theirMove) {
-        return theirMove.equals("A");
-    }
-
-    private static boolean isWin(String outcome) {
-        return outcome.equals("Z");
     }
 
     private static boolean isDraw(String outcome) {
