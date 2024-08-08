@@ -20,4 +20,9 @@ public class Rock implements Move {
     public int moveScore() {
         return 1;
     }
+
+    @Override
+    public Move moveFor(Outcome outcome) {
+        return null;
+    }
 }

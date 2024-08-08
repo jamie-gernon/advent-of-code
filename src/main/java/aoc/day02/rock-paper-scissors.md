@@ -3,11 +3,21 @@ classDiagram
     Move <|-- Rock
     Move <|-- Paper
     Move <|-- Scissors
-
-    class Move{
-        +winsAgainst()
-        +losesAgainst()
-        +drawsAgainst()
+    Outcome <|-- Win
+    Outcome <|-- Lose
+    Outcome <|-- Draw
+    
+    class Outcome{
+        +int score()
     }
+    
+    class Move{
+        +moveFor(Outcome outcome)
+    }
+    
+```
+
+```mermaid
+sequenceDiagram
     
 ```

@@ -52,20 +52,21 @@ public class Day02 extends Day {
         int result = 0;
         for (String game :games) {
             Move theirMove = Move.fromString(game.split(" ")[0]);
-            String outcome = game.split(" ")[1];
 
-            if (isLoss(outcome)) {
-                result += theirMove.winsAgainst().moveScore();
-                result += LOSS_SCORE;
-            }
-            else if (isDraw(outcome)) {
-                result += theirMove.drawsAgainst().moveScore();
-                result += DRAW_SCORE;
-            }
-            else {
-                result += theirMove.losesAgainst().moveScore();
-                result += WIN_SCORE;
-            }
+            Outcome outcome = Outcome.fromString(game.split(" ")[1]);
+            result += outcome.outcomeScore();
+            Move ourMove = theirMove.moveFor(outcome);
+            result += ourMove.moveScore();
+
+//            if (isLoss(outcome)) {
+//                result += theirMove.winsAgainst().moveScore();
+//            }
+//            else if (isDraw(outcome)) {
+//                result += theirMove.drawsAgainst().moveScore();
+//            }
+//            else {
+//                result += theirMove.losesAgainst().moveScore();
+//            }
         }
 
         return String.valueOf(result);

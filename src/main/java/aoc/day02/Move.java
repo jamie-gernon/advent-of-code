@@ -21,4 +21,6 @@ public interface Move {
     Move losesAgainst();
 
     int moveScore();
+
+    Move moveFor(Outcome outcome);
 }
