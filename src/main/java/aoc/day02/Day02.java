@@ -55,18 +55,9 @@ public class Day02 extends Day {
 
             Outcome outcome = Outcome.fromString(game.split(" ")[1]);
             result += outcome.outcomeScore();
-            Move ourMove = theirMove.moveFor(outcome);
+            Move ourMove = outcome.moveFor(theirMove);
             result += ourMove.moveScore();
 
-//            if (isLoss(outcome)) {
-//                result += theirMove.winsAgainst().moveScore();
-//            }
-//            else if (isDraw(outcome)) {
-//                result += theirMove.drawsAgainst().moveScore();
-//            }
-//            else {
-//                result += theirMove.losesAgainst().moveScore();
-//            }
         }
 
         return String.valueOf(result);

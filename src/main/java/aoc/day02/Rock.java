@@ -21,8 +21,4 @@ public class Rock implements Move {
         return 1;
     }
 
-    @Override
-    public Move moveFor(Outcome outcome) {
-        return null;
-    }
 }

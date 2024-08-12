@@ -5,4 +5,9 @@ public class Win implements Outcome {
     public int outcomeScore() {
         return 6;
     }
+
+    @Override
+    public Move moveFor(Move move) {
+        return move.losesAgainst();
+    }
 }

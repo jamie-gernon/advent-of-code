@@ -12,4 +12,6 @@ public interface Outcome {
     }
 
     int outcomeScore();
+
+    Move moveFor(Move move);
 }

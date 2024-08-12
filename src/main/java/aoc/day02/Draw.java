@@ -5,4 +5,11 @@ public class Draw implements Outcome {
     public int outcomeScore() {
         return 3;
     }
+
+    @Override
+    public Move moveFor(Move move) {
+        return move.drawsAgainst();
+    }
+
+
 }
